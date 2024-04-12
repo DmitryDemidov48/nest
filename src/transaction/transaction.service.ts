@@ -24,10 +24,8 @@ export class TransactionService {
       amount: createTransactionDto.amount,
       type: createTransactionDto.type,
       category: { id: +createTransactionDto.category },
-      user: { id },
+      user: { id }
     }
-
-
 
     // Проверка наличия данных о транзакции
     if (!newTransaction) {

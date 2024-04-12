@@ -1,18 +1,18 @@
 import {
   Column,
   CreateDateColumn,
-  Entity,
+  Entity, JoinColumn,
   ManyToOne,
-  PrimaryColumn,
+  PrimaryColumn, PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
 import { User } from '../../user/entities/user.entity'
-import { JoinColumn } from 'typeorm'
+
 import { Category } from '../../category/entities/category.entity'
 
 @Entity()
 export class Transaction {
-  @PrimaryColumn({ name: 'transaction_id' })
+  @PrimaryGeneratedColumn({ name: 'transaction_id' })
   id: number
 
   @Column()
@@ -21,16 +21,20 @@ export class Transaction {
   @Column({ nullable: true })
   type: string
 
+  @Column()
+  amount: number
+
   @ManyToOne(() => User, (user) => user.transactions)
   @JoinColumn({ name: 'user_id' })
   user: User
 
-  @ManyToOne(() => Category, (category) => category.transactions)
+  @ManyToOne(() => Category, (category) => category.transactions, {
+    onDelete: 'SET NULL'
+  })
   @JoinColumn({ name: 'category_id' })//
   category: Category
 
-  @Column()
-  amount: number
+
 
   @CreateDateColumn()
   createdAt: Date

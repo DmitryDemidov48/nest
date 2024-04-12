@@ -15,8 +15,8 @@ import { CategoryService } from './category.service'
 
 import { UpdateCategoryDto } from './dto/update-category.dto'
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard'
-import { AuthorGuard } from '../auth/guards/author.guard'
 import { CreateCategoryDto } from './dto/create-category.dto'
+import {AuthorGuard} from "../auth/guards/author.guard";
 
 @Controller('categories')
 export class CategoryController {

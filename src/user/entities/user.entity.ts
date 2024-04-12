@@ -11,7 +11,7 @@ import { Transaction } from '../../transaction/entities/transaction.entity'
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn({ name: 'user_id' })
   id: number // Уникальный идентификатор пользователя, автоматически генерируемый
 
   @Column()
